@@ -1,0 +1,13 @@
+{
+  "name": "advanced_spaceship_repair",
+  "version": "1.0.0",
+  "date": "2025-04-17",
+  "title": "Advanced Spaceship Repair",
+  "author": "heyqule",
+  "description": "Speed up repairing entities on space platform. Damaged entities repair in a batch, instead of one at a time.",
+  "factorio_version": "2.0",
+  "dependencies": [
+    "base >= 2.0.0",
+    "space-age >= 2.0.0"
+  ]
+}
