@@ -4,7 +4,7 @@
 --- DateTime: 4/17/2025 11:45 PM
 ---
 
---- Number of repair per batch (run once per second) 6, 12, 24, 36, 48
+--- Number of repair per batch (run once per 3 second) 6, 12, 24, 36, 48
 --- Health ratio threshold required for priority repair
 
 data:extend {

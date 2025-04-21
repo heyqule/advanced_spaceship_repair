@@ -81,8 +81,8 @@ local process_repair_queue = function(event)
                 repair_pack_on_ship = inventory.find_item_stack(name)
                 if repair_pack_on_ship then
                     local drain_durability = repair_pack_on_ship.item.durability
-                    if repair_pack_on_ship.durability > 1000 then
-                        drain_durability = 1000
+                    if repair_pack_on_ship.durability > 1500 then
+                        drain_durability = 1500
                     end
                     drain_rate = drain_durability
                     break;
