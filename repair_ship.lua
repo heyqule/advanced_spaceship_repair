@@ -71,7 +71,7 @@ local process_repair_queue = function(event)
         if surface and surface.valid then
             local index, entity = next(entities, nil)
 
-            if not index then
+            if not index or not surface.platform.hub then
                 goto aspr_process_repair_queue_bypass_surface
             end
             
