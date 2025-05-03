@@ -54,6 +54,7 @@ local add_to_repair_list = function(event)
     local entity = event.entity
     if entity and entity.valid then
         local surface = entity.surface
+        
         if entity.surface and entity.surface.platform and
                 not storage.platform_damaged_entities[surface.index][entity.unit_number] and
                 entity.surface.platform.force.name == entity.force.name and
@@ -112,11 +113,23 @@ local process_repair_queue = function(event)
     end
 end
 
+local create_data_structure = function(event)
+    storage.platform_damaged_entities[event.surface_id] = {}
+end
+
+local remove_data_structure = function(event)
+    storage.platform_damaged_entities[event.surface_id] = nil
+end
+
 local ShipRepair = {}
 ShipRepair.on_configuration_changed = index_damaged_entities
 ShipRepair.on_init = index_damaged_entities
 ShipRepair.events = {
     [defines.events.on_runtime_mod_setting_changed] = index_damaged_entities,
+    [defines.events.on_surface_created] = create_data_structure,
+    [defines.events.on_surface_imported] = create_data_structure,
+    [defines.events.on_surface_cleared] = create_data_structure,
+    [defines.events.on_surface_deleted] = remove_data_structure,
 }
 ShipRepair.on_nth_tick = {
     [181] = process_repair_queue,
