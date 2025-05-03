@@ -114,11 +114,11 @@ local process_repair_queue = function(event)
 end
 
 local create_data_structure = function(event)
-    storage.platform_damaged_entities[event.surface_id] = {}
+    storage.platform_damaged_entities[event.surface_index] = {}
 end
 
 local remove_data_structure = function(event)
-    storage.platform_damaged_entities[event.surface_id] = nil
+    storage.platform_damaged_entities[event.surface_index] = nil
 end
 
 local ShipRepair = {}
