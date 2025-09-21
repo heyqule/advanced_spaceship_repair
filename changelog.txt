@@ -1,41 +1,49 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.6
+Date: 2025-09-21
+
+  Changes:
+    - Minor performance improvement.
+    - Added "Include units" toggle to global setting.  It controls whether to include unit type entities in repair queue as it adds more than 5x performance cost. [default: off]    
+
+---------------------------------------------------------------------------------------------------
 Version: 1.0.5
-Date: 2024-05-03
+Date: 2025-05-03
 
   Bugfixes:
     - Fixed a crash when creating a new game, it introduced in 1.0.4.
 
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.4
-Date: 2024-05-03
+Date: 2025-05-03
 
   Bugfixes:
     - Fixed a crash when a newly generated platform takes damage.
 
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.3
-Date: 2024-05-02
+Date: 2025-05-02
 
   Bugfixes:
     - Fixed a crash when platform hub does not exist on the space platform.
 
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.2
-Date: 2024-04-20
+Date: 2025-04-20
 
   Bugfixes:
     - Changed max durability check from 1000 to 1500 as indicated in changelog/readme.
 
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.1
-Date: 2024-04-18
+Date: 2025-04-18
 
   Changes:
     - Fixed thumbnail.
 
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.0
-Date: 2024-04-18
+Date: 2025-04-18
 
   Features:
     - Added support to rapidly repair entities on your space platform.

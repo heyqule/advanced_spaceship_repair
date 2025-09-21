@@ -26,4 +26,12 @@ data:extend {
         allowed_values = {0.25, 0.33, 0.5, 0.66, 0.75},
         order = "2"
     },
+    {
+        type = "bool-setting",
+        name = "aspr-include-units",
+        description = "aspr-include-units",
+        setting_type = "runtime-global",
+        default_value = false,
+        order = "3"
+    },
 }

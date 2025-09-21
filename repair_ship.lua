@@ -23,7 +23,21 @@ local get_repair_pack_prototypes = function()
     end
 end
 
-local index_damaged_entities = function(event)
+local add_to_repair_list = function(event)
+    local entity = event.entity
+    if entity and entity.valid and entity.get_health_ratio() < health_ratio then
+        local surface = entity.surface
+
+        if entity.surface and entity.surface.platform and
+                not storage.platform_damaged_entities[surface.index][entity.unit_number] and
+                entity.surface.platform.force.name == entity.force.name
+        then
+            storage.platform_damaged_entities[surface.index][entity.unit_number] = entity
+        end
+    end
+end
+
+local index_damaged_entities = function(event) 
     storage.platform_damaged_entities = storage.platform_damaged_entities or {}
     local damaged_entities = storage.platform_damaged_entities
     health_ratio = settings.global['aspr-health-ratio'].value
@@ -48,22 +62,27 @@ local index_damaged_entities = function(event)
     print("Setting batch_count: "..batch_count)
     print("Indexed damaged entities: "..i)
     print(serpent.block(repair_pack_data))
+
+    local filters =     {
+        {filter="turret", mode = "or"},
+        {filter="crafting-machine", mode = "or"},
+        {filter="transport-belt-connectable", mode = "or"},
+        {filter = "type", type = "inserter", mode="or"},
+        {filter = "type", type = "asteroid-collector", mode="or"},
+    }
+
+    if settings.global['aspr-include-units'].value == true then
+        table.insert(filters,    {filter = "type", type = "unit", mode="or"})
+    end
+
+    script.on_event(defines.events.on_entity_damaged,
+            function(event)
+                add_to_repair_list(event)
+            end,
+            filters
+    )
 end
 
-local add_to_repair_list = function(event)
-    local entity = event.entity
-    if entity and entity.valid then
-        local surface = entity.surface
-        
-        if entity.surface and entity.surface.platform and
-                not storage.platform_damaged_entities[surface.index][entity.unit_number] and
-                entity.surface.platform.force.name == entity.force.name and
-                entity.get_health_ratio() and entity.get_health_ratio() < health_ratio
-        then
-            storage.platform_damaged_entities[surface.index][entity.unit_number] = entity
-        end
-    end
-end
 
 local process_repair_queue = function(event)
     get_repair_pack_prototypes()
