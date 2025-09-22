@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.7
+Date: 2025-09-22
+
+  Bugfixes:
+    - Moved "include unit" setting to startup setting.  Replacing event on runtime causes multiplayer incompatibility.
+
+---------------------------------------------------------------------------------------------------
 Version: 1.0.6
 Date: 2025-09-21
 

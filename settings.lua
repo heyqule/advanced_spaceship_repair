@@ -30,7 +30,7 @@ data:extend {
         type = "bool-setting",
         name = "aspr-include-units",
         description = "aspr-include-units",
-        setting_type = "runtime-global",
+        setting_type = "startup",
         default_value = false,
         order = "3"
     },

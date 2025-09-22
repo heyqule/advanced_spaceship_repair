@@ -62,25 +62,6 @@ local index_damaged_entities = function(event)
     print("Setting batch_count: "..batch_count)
     print("Indexed damaged entities: "..i)
     print(serpent.block(repair_pack_data))
-
-    local filters =     {
-        {filter="turret", mode = "or"},
-        {filter="crafting-machine", mode = "or"},
-        {filter="transport-belt-connectable", mode = "or"},
-        {filter = "type", type = "inserter", mode="or"},
-        {filter = "type", type = "asteroid-collector", mode="or"},
-    }
-
-    if settings.global['aspr-include-units'].value == true then
-        table.insert(filters,    {filter = "type", type = "unit", mode="or"})
-    end
-
-    script.on_event(defines.events.on_entity_damaged,
-            function(event)
-                add_to_repair_list(event)
-            end,
-            filters
-    )
 end
 
 
